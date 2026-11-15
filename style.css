@@ -227,3 +227,28 @@ main.flight-main{max-width:none;padding:0}
 
 .landing-photo{display:block;width:calc(100% + 3.4rem);max-width:none;height:170px;object-fit:cover;margin:-1.6rem -1.7rem 1.2rem;background:var(--panel2)}
 @media (max-width:760px){.landing-photo{width:calc(100% + 2.4rem);height:110px;margin:-1.1rem -1.2rem .9rem}}
+
+/* Career : niveaux de langues, bandeau de contact, effet des points */
+.lv{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.lv .row{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1.1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.lv b{font-size:1.05rem}
+.lv small{display:block;color:var(--soft);font-size:.9rem}
+.dots{display:flex;gap:5px;flex:none}
+.dots i{width:11px;height:11px;border-radius:50%;background:var(--line)}
+.dots i.f{background:var(--accent)}
+.cta-band{max-width:760px;margin:4rem auto 0;background:var(--navy);color:#fff;border-radius:18px;padding:2.2rem 1.5rem;text-align:center}
+.cta-band h2{color:#fff;margin:0 0 .3em}
+.cta-band h2::after{content:"";display:block;width:34px;height:3px;background:var(--red);margin:10px auto 1rem}
+.cta-band p{max-width:30rem;margin:0 auto 1.4rem;opacity:.9}
+.cta-band .pills{justify-content:center}
+.cta-band .pill{border-color:#fff;color:#fff}
+.cta-band .pill.red{background:var(--red);border-color:var(--red)}
+@media (max-width:860px){.lv{grid-template-columns:1fr}}
+
+/* Effet au défilement : les points grossissent et se remplissent les uns après les autres */
+.fx .timeline .item::before{transform:scale(.4);opacity:.35;transition:transform .55s cubic-bezier(.34,1.8,.5,1) var(--d,0ms),opacity .4s var(--d,0ms),background .4s var(--d,0ms)}
+.fx .timeline .item.in::before{transform:scale(1.15);opacity:1;background:var(--accent)}
+.fx .dots i{transform:scale(.4);transition:transform .5s cubic-bezier(.34,1.8,.5,1) calc(var(--d,0ms) + var(--i,0)*120ms),background .35s calc(var(--d,0ms) + var(--i,0)*120ms)}
+.fx .dots i.f{background:var(--line)}
+.fx .row.in .dots i{transform:scale(1.1)}
+.fx .row.in .dots i.f{background:var(--accent)}

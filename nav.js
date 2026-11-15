@@ -12,4 +12,14 @@ document.addEventListener("DOMContentLoaded",function(){
       }else{toast(addr)}
     });
   });
+  /* Les points de la frise et des niveaux de langues apparaissent un à un au défilement */
+  if(document.documentElement.classList.contains("fx")){
+    var io=new IntersectionObserver(function(es){
+      var k=0;
+      es.forEach(function(e){
+        if(e.isIntersecting){e.target.style.setProperty("--d",(k*140)+"ms");k++;e.target.classList.add("in");io.unobserve(e.target);}
+      });
+    },{threshold:0.4,rootMargin:"0px 0px -8% 0px"});
+    document.querySelectorAll(".timeline .item,.lv .row").forEach(function(el){io.observe(el)});
+  }
 });

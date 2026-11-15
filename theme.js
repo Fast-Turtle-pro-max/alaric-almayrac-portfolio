@@ -3,6 +3,7 @@
   try{s=localStorage.getItem(k)}catch(e){}
   if(!s)s=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
   r.setAttribute("data-theme",s);
+  if(!matchMedia("(prefers-reduced-motion: reduce)").matches&&"IntersectionObserver" in window)r.classList.add("fx");
   document.addEventListener("DOMContentLoaded",function(){
     var b=document.getElementById("theme-toggle");
     if(!b)return;
